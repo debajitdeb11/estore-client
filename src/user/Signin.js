@@ -58,16 +58,14 @@ const Signin = () => {
     };
 
     const performRedirect = () => {
-        // TODO: incomplete
-
         console.log("didRedirect", didRedirect);
 
         if (didRedirect) {
             console.log("(user && user.role === 2)", user && user.role === 2);
             if (user && user.role === 2) {
-                return <p>Redirect to admin</p>;
+                return <Redirect to="/admin/dashboard" />;
             } else {
-                return <p>Redirect to user dashboard</p>;
+                return <Redirect to="/user/dashboard" />;
             }
         }
 
