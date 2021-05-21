@@ -10,8 +10,8 @@ import {
 
 const Signin = () => {
     const [values, setValues] = useState({
-        email: "",
-        password: "",
+        email: "test@user.com",
+        password: "12345",
         error: "",
         loading: false,
         didRedirect: false,
@@ -20,6 +20,10 @@ const Signin = () => {
     const { email, password, error, loading, didRedirect } = values;
 
     const { user } = isAuthenticated();
+
+    console.log(isAuthenticated());
+
+    // var userRole = null;
 
     const handleChange = (name) => (e) => {
         setValues({ ...values, error: false, [name]: e.target.value });
@@ -33,9 +37,13 @@ const Signin = () => {
             password,
         })
             .then((data) => {
-                if (error.data) {
+                console.log(data);
+
+                if (data.error) {
                     setValues({ ...values, error: data.error, loading: false });
                 } else {
+                    // console.log("Data => " + JSON.stringify(data.user.role));
+                    // userRole = data.user;
                     authenticate(data, () => {
                         setValues({
                             ...values,
@@ -50,8 +58,13 @@ const Signin = () => {
     };
 
     const performRedirect = () => {
+        // TODO: incomplete
+
+        console.log("didRedirect", didRedirect);
+
         if (didRedirect) {
-            if (user && user.role === 1) {
+            console.log("(user && user.role === 2)", user && user.role === 2);
+            if (user && user.role === 2) {
                 return <p>Redirect to admin</p>;
             } else {
                 return <p>Redirect to user dashboard</p>;
