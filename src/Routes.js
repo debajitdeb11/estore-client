@@ -12,6 +12,7 @@ import ManageCategory from "./admin/ManageCategory";
 import AddProduct from "./admin/AddProduct";
 import ManageProduct from "./admin/ManageProduct";
 import UpdateProduct from "./admin/UpdateProduct";
+import Cart from "./core/Cart";
 
 export default function Routers() {
     return (
@@ -21,6 +22,7 @@ export default function Routers() {
                     <Route path="/" exact component={Home} />
                     <Route path="/signup" exact component={Signup} />
                     <Route path="/signin" exact component={Signin} />
+                    <Route path="/cart" exact component={Cart} />
                     <PrivateRoute
                         path="/user/dashboard"
                         exact
