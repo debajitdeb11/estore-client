@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
     const {
-        user: { name = "user", email, role },
+        user: { firstname = "user", email, role },
     } = isAuthenticated();
 
     const adminLeftSide = () => {
@@ -27,6 +27,15 @@ const AdminDashboard = () => {
 
                     <li className="list-group-item">
                         <Link
+                            to="/admin/categories"
+                            className="nav-link text-success"
+                        >
+                            Manage Category
+                        </Link>
+                    </li>
+
+                    <li className="list-group-item">
+                        <Link
                             to="/admin/create/product"
                             className="nav-link text-success"
                         >
@@ -36,15 +45,7 @@ const AdminDashboard = () => {
 
                     <li className="list-group-item">
                         <Link
-                            to="/admin/category"
-                            className="nav-link text-success"
-                        >
-                            Manage Category
-                        </Link>
-                    </li>
-                    <li className="list-group-item">
-                        <Link
-                            to="/admin/product"
+                            to="/admin/products"
                             className="nav-link text-success"
                         >
                             Manage Product
@@ -62,7 +63,7 @@ const AdminDashboard = () => {
                 <ul className="list-group">
                     <li className="list-group-item">
                         <span className="badge badge-success mr-2">Name: </span>{" "}
-                        {name.toString().toUpperCase()}
+                        {firstname.toString().toUpperCase()}
                     </li>
                     <li className="list-group-item">
                         <span className="badge badge-success mr-2">
